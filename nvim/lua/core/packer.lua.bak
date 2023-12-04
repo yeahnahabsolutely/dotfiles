@@ -1,0 +1,43 @@
+vim.cmd [[packadd packer.nvim]]
+
+return require('packer').startup(function(use)
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
+
+    use { 
+        "ibhagwan/fzf-lua",
+        -- optional for icon support
+        requires = { "nvim-tree/nvim-web-devicons" }
+    }
+
+    use {"ellisonleao/gruvbox.nvim"}
+
+    use('nvim-treesitter/nvim-treesitter', {run=':TSUpdate'})
+    use('mbbill/undotree')
+
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v2.x',
+        requires = {
+            -- LSP Support
+            --
+            {'neovim/nvim-lspconfig'},             -- Required
+            {'williamboman/mason.nvim'},           -- Optional
+            {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+            -- Autocompletion
+            {'hrsh7th/nvim-cmp'},     -- Required
+            {'hrsh7th/cmp-nvim-lsp'}, -- Required
+            {'L3MON4D3/LuaSnip'},     -- Required
+        }
+    }
+
+    use('mbbill/undotree')
+
+    use {
+        'numToStr/Comment.nvim',
+        opts = {},
+        lazy = false,
+    }
+
+end)
